@@ -51,7 +51,7 @@ func (api *Api) Create(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-
+	//Go will auto use goroutines to improve performance.
 	var png []byte
 	png, err = qrcode.Encode(message, qrcode.Medium, 256);
 	if err != nil {
@@ -63,6 +63,7 @@ func (api *Api) Create(w http.ResponseWriter, r *http.Request) {
 	//formatNormalResponceHeaderText(w)
 	formatNormalResponceHeaderPng(w);
 	w.Write(png);
+
 	return
 }
 
